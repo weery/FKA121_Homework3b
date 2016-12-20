@@ -1,0 +1,127 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3332,        118]
+NotebookOptionsPosition[      2912,         98]
+NotebookOutlinePosition[      3252,        113]
+CellTagsIndexPosition[      3209,        110]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[{
+ "Computational Physics FKA121\n",
+ StyleBox["Homeproblem 3B\n", "Title"],
+ StyleBox["Task 1", "Subchapter"]
+}], "Chapter",
+ CellChangeTimes->{{3.69123021183018*^9, 3.6912302321689787`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"wave", " ", "=", " ", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      FractionBox["1", 
+       RowBox[{"\[Pi]", " ", 
+        SuperscriptBox["d", "2"]}]], ")"}], 
+     RowBox[{"1", "/", "4"}]], 
+    RowBox[{"Exp", "[", 
+     FractionBox[
+      RowBox[{"-", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"x", "-", "x0"}], ")"}], "2"]}], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["d", "2"]}]], "]"}], " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{"\[ImaginaryI]", " ", "p0", " ", 
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"x", "-", "x0"}], ")"}], "/", "\[HBar]"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fWave", " ", "=", " ", 
+   RowBox[{"FourierTransform", "[", 
+    RowBox[{"wave", ",", " ", "x", ",", " ", "p"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", "fWave", "\[IndentingNewLine]", 
+ RowBox[{"fWave", "//", "InputForm"}]}], "Input",
+ CellChangeTimes->{{3.691230233870574*^9, 3.691230364528964*^9}, {
+  3.6912304624642677`*^9, 3.691230489291834*^9}, {3.6912306058912477`*^9, 
+  3.691230614633391*^9}, {3.691230699288478*^9, 3.691230737079852*^9}, {
+  3.691230851805193*^9, 3.691230854366943*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  SuperscriptBox["\[ExponentialE]", 
+   RowBox[{
+    RowBox[{"\[ImaginaryI]", " ", "p", " ", "x0"}], "-", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["d", "2"], " ", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"p0", "+", 
+         RowBox[{"p", " ", "\[HBar]"}]}], ")"}], "2"]}], 
+     RowBox[{"2", " ", 
+      SuperscriptBox["\[HBar]", "2"]}]]}]], 
+  RowBox[{
+   SuperscriptBox[
+    RowBox[{"(", 
+     FractionBox["1", 
+      SuperscriptBox["d", "2"]], ")"}], 
+    RowBox[{"1", "/", "4"}]], " ", 
+   SuperscriptBox["\[Pi]", 
+    RowBox[{"1", "/", "4"}]]}]]], "Output",
+ CellChangeTimes->{3.691230737549843*^9, 3.6912308547927094`*^9}],
+
+Cell["\<\
+E^(I*p*x0 - (d^2*(p0 + p*\[HBar])^2)/(2*\[HBar]^2))/((d^(-2))^(1/4)*Pi^(1/4))\
+\
+\>", "Output",
+ CellChangeTimes->{3.691230737549843*^9, 3.6912308548426867`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{928, 1028},
+WindowMargins->{{-10, Automatic}, {Automatic, -10}},
+FrontEndVersion->"10.0 for Linux x86 (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 206, 5, 161, "Chapter"],
+Cell[CellGroupData[{
+Cell[811, 31, 1209, 33, 130, "Input"],
+Cell[2023, 66, 687, 22, 81, "Output"],
+Cell[2713, 90, 171, 4, 46, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
