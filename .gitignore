@@ -32,3 +32,4 @@ code/*.tikz
 
 # Matlab
 *.asv
+*.m~ # Temporary matlab files
