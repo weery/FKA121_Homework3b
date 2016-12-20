@@ -1,0 +1,42 @@
+\documentclass[a4paper,10pt,titlepage]{article}
+
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{txfonts}
+\usepackage{microtype}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{moreverb}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.98}
+\definecolor{lbcolor}{rgb}{0.98,0.98,0.98}
+\lstset{
+	backgroundcolor=\color{lbcolor},
+	tabsize=4,
+	rulecolor=,
+	language=matlab,
+    basicstyle=\scriptsize\ttfamily,
+    upquote=true,
+    aboveskip={1.5\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+\usepackage{eso-pic}
+\usepackage{ifthen}
+
+\AddToShipoutPictureBG{\ifthenelse{\equal{\value{page}}{0}}{}{\includegraphics{template_files/backgroundlines}}}
