@@ -2,7 +2,7 @@
 % HOMEWORK 3B IN COMP.PHYS. - TASK 1
 % ===================================
 % By Victor Nilsson, Simon Nilsson
-% 2016
+% 2015
 %
 % Length scale: 1 Å
 % Time scale:   1 fs = 1e-15 s
@@ -21,7 +21,7 @@ n_points    = 1024;
 
 
 % ----------- VARIABLES ------------
-x = dx*(0:n_points);
+x = dx*(0:n_points-1);
 p = 1/(n_points*dx)*(0:n_points/2);
 % Functions handles
 Gaussian_Wave_Packet = @(x)1/(pi*d^2)^(1/4)*exp(-(x-x_0).^2/(2*d^2)).*exp(1i*p_0*(x-x_0)/hbar);
