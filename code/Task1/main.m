@@ -21,28 +21,34 @@ n_points    = 1024;
 
 
 % ----------- VARIABLES ------------
+% space samples
 x = dx*(0:n_points-1);
-p = 1/(n_points*dx)*(0:n_points/2);
-% Functions handles
+% and the corresponding samples in momentum space
+p = 2*pi/(n_points*dx)*(0:n_points/2);
+% ---- Functions handles ----
 Gaussian_Wave_Packet = @(x)1/(pi*d^2)^(1/4)*exp(-(x-x_0).^2/(2*d^2)).*exp(1i*p_0*(x-x_0)/hbar);
-Gaussian_Fourier_Packet = @(p)(exp(1i*p*x_0 - (d^2*(p_0 + p*hbar).^2)./(2*hbar^2))./((d^(-2))^(1/4)*pi^(1/4)));
-% ----
+% Fourier transform obtained via Mathematica
+Gaussian_Packet_Fourier = @(p)(exp(1i*p*x_0 - (d^2*(p_0 - p*hbar).^2)./(2*hbar^2))./((d^(-2))^(1/4)*pi^(1/4)));
+% ---------------------------------
 
-gauss = Gaussian_Wave_Packet(x);
-fourier = abs(Gaussian_Fourier_Packet(p)).^2;
-prob = abs(gauss).^2;
-momentum = abs(fft(gauss)).^2;
-momentum = momentum(1:floor(length(x)/2))*1/length(x);
+% Sample-discretize the wave packet function
+wave_packet = Gaussian_Wave_Packet(x)*dx;
+fourier_prob = abs(Gaussian_Packet_Fourier(p)).^2;
 
-temp = abs(fft(prob))/n_points;
-momentum = temp(1:n_points/2+1);
-momentum(2:end-1) = 2*momentum(2:end-1);
-momentum = momentum.^2;
+%prob = abs(wave_packet).^2;
+%momentum_prob = abs(fft(wave_packet)).^2;
+%momentum_prob = momentum_prob(1:floor(length(x)/2))*1/length(x);
+
+temp = abs(fft(wave_packet))/n_points;
+momentum_prob = temp(1:length(p));
+% Compute double-sided contribution
+momentum_prob(2:end-1) = 2*momentum_prob(2:end-1);
+momentum_prob = momentum_prob.^2;
 
 figure(1); clf;
-%plot(prob)
-plot(p, momentum)
+plot(p, momentum_prob*1e5)
 hold on
-%figure(2); clf;
-plot(p, fourier.*1e4)
+plot(p, fourier_prob)
 hold off
+xlabel('Momentum')
+legend('fourier prob', 'theoretic prob')
