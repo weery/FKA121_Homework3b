@@ -29,7 +29,7 @@ p = ((0:n_points-1)-n_points/2)*dp;
 % ---- Functions handles ----
 Gaussian_Wave_Packet = @(x)1/(pi*d^2)^(1/4)*exp(-(x-x_0).^2/(2*d^2)).*exp(1i*p_0*(x-x_0)/hbar);
 % Fourier transform obtained via Mathematica
-Gaussian_Packet_Fourier = @(p)(exp(1i*p*x_0 - (d^2*(p_0 - p*hbar).^2)./(2*hbar^2))./((d^(-2))^(1/4)*pi^(1/4)));
+Gaussian_Packet_Fourier = @(p)(exp(1i*p*x_0 - (d^2*(p_0 - p*hbar).^2)./(2*hbar^2))/((d^(-2))^(1/4)*pi^(1/4)));
 % ---------------------------------
 
 % Sample-discretize the wave packet function
@@ -39,5 +39,5 @@ fourier_prob = abs(Gaussian_Packet_Fourier(p));
 temp = fftshift(fft(wave_packet));
 plot(p,abs(temp).^2)
 hold on
-plot(p,fourier_prob)
+plot(p,fourier_prob.^2)
 xlim([min(p) max(p)])
