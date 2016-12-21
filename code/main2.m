@@ -17,7 +17,7 @@ m           = 1.66/1.6*1e2;
 p_0         = sqrt(0.1*2*m);
 x_0         = 0;
 dx          = 0.1;
-n_points    = 2^12;
+n_points    = 2^10;
 dp          = 2*pi/(n_points*dx);
 dt          = 1;
 
@@ -37,13 +37,32 @@ potential = Potential_Function(x);
 exp_potential = exp(-1i/hbar.*potential*dt);
 inv_pot = exp(-1i/hbar*(hbar^2*p.^2./(2*m))*dt);
 
-for j=1:n_points/4
+
+% Plot initial prob.distr.
+figure(1); clf;
+plot(x(1:n_points/2), abs(step_three(1:n_points/2).^2))
+xlim([0 2])
+xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
+ylabel('Probability distribution', 'fontsize', 14)
+title('$\left| \psi (0) \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
+
+% Plot the rest in a separate figure
+figure(2); clf;
+step_one = step_three;
+step_two = fftshift(fft(step_one.*exp_potential));
+step_three = ifft(ifftshift(inv_pot.*step_two));
+
+plotHandle = plot(x(1:n_points/2), abs(step_three(1:n_points/2).^2));
+xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
+ylabel('Probability distribution', 'fontsize', 14)
+title('$\left| \psi (t = 256 \mathrm{fs}) \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
+
+for j=1:n_points/4-1
     step_one = step_three;
     
     step_two = fftshift(fft(step_one.*exp_potential));
     step_three = ifft(ifftshift(inv_pot.*step_two));
-    plot(x,abs(step_three).^2)
+    set(plotHandle, 'YData', abs(step_three(1:n_points/2).^2))
     pause(0.01)
 end
-
 
