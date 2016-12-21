@@ -2,7 +2,7 @@
 % HOMEWORK 3B IN COMP.PHYS. - TASK 1
 % ===================================
 % By Victor Nilsson, Simon Nilsson
-% 2015
+% 2016
 %
 % Length scale: 1 Å
 % Time scale:   1 fs = 1e-15 s
@@ -38,7 +38,7 @@ wave_packet = Gaussian_Wave_Packet(x)*dx;
 theoretic_prob = abs(Gaussian_Packet_Fourier(p)).^2;
 
 prob = abs(wave_packet/dx).^2;
-fft_prob_momentum = abs(fftshift(fft(wave_packet))).^2;
+fft_prob_momentum = abs(fftshift(fft(wave_packet))).^2*dp;
 
 % Plot prob.distr. in momentum space
 figure(1); clf;
@@ -46,13 +46,15 @@ plot(p/p_0, fft_prob_momentum)
 hold on
 plot(p/p_0, theoretic_prob)
 hold off
-xlim([-20 20])
+xlim([-5 5])
 xlabel('Momentum / $p_0$', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
-legend('Numerically obtained via FFT', 'Analytically obtained via FT')
+L = legend('Numerically obtained via FFT', 'Analytically obtained via FT');
+set(L, 'location', 'northwest')
 
 % Plot prob.distr. in normal space
 figure(2); clf;
 plot(x, prob)
+xlim([0 4])
 ylabel('Probability Distribution', 'fontsize', 14)
 xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
