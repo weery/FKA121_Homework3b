@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3332,        118]
-NotebookOptionsPosition[      2912,         98]
-NotebookOutlinePosition[      3252,        113]
-CellTagsIndexPosition[      3209,        110]
+NotebookDataLength[      3464,        122]
+NotebookOptionsPosition[      3044,        102]
+NotebookOutlinePosition[      3384,        117]
+CellTagsIndexPosition[      3341,        114]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -55,26 +55,28 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"fWave", " ", "=", " ", 
-   RowBox[{"FourierTransform", "[", 
+   RowBox[{"InverseFourierTransform", "[", 
     RowBox[{"wave", ",", " ", "x", ",", " ", "p"}], "]"}]}], 
   ";"}], "\[IndentingNewLine]", "fWave", "\[IndentingNewLine]", 
  RowBox[{"fWave", "//", "InputForm"}]}], "Input",
  CellChangeTimes->{{3.691230233870574*^9, 3.691230364528964*^9}, {
   3.6912304624642677`*^9, 3.691230489291834*^9}, {3.6912306058912477`*^9, 
   3.691230614633391*^9}, {3.691230699288478*^9, 3.691230737079852*^9}, {
-  3.691230851805193*^9, 3.691230854366943*^9}}],
+  3.691230851805193*^9, 3.691230854366943*^9}, {3.691318304087049*^9, 
+  3.691318304941066*^9}}],
 
 Cell[BoxData[
  FractionBox[
   SuperscriptBox["\[ExponentialE]", 
    RowBox[{
-    RowBox[{"\[ImaginaryI]", " ", "p", " ", "x0"}], "-", 
+    RowBox[{
+     RowBox[{"-", "\[ImaginaryI]"}], " ", "p", " ", "x0"}], "-", 
     FractionBox[
      RowBox[{
       SuperscriptBox["d", "2"], " ", 
       SuperscriptBox[
        RowBox[{"(", 
-        RowBox[{"p0", "+", 
+        RowBox[{"p0", "-", 
          RowBox[{"p", " ", "\[HBar]"}]}], ")"}], "2"]}], 
      RowBox[{"2", " ", 
       SuperscriptBox["\[HBar]", "2"]}]]}]], 
@@ -86,13 +88,15 @@ Cell[BoxData[
     RowBox[{"1", "/", "4"}]], " ", 
    SuperscriptBox["\[Pi]", 
     RowBox[{"1", "/", "4"}]]}]]], "Output",
- CellChangeTimes->{3.691230737549843*^9, 3.6912308547927094`*^9}],
+ CellChangeTimes->{3.691230737549843*^9, 3.6912308547927094`*^9, 
+  3.6913183062488537`*^9}],
 
 Cell["\<\
-E^(I*p*x0 - (d^2*(p0 + p*\[HBar])^2)/(2*\[HBar]^2))/((d^(-2))^(1/4)*Pi^(1/4))\
-\
+E^((-I)*p*x0 - (d^2*(p0 - \
+p*\[HBar])^2)/(2*\[HBar]^2))/((d^(-2))^(1/4)*Pi^(1/4))\
 \>", "Output",
- CellChangeTimes->{3.691230737549843*^9, 3.6912308548426867`*^9}]
+ CellChangeTimes->{3.691230737549843*^9, 3.6912308547927094`*^9, 
+  3.691318306251815*^9}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -115,9 +119,9 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 206, 5, 161, "Chapter"],
 Cell[CellGroupData[{
-Cell[811, 31, 1209, 33, 130, "Input"],
-Cell[2023, 66, 687, 22, 81, "Output"],
-Cell[2713, 90, 171, 4, 46, "Output"]
+Cell[811, 31, 1265, 34, 130, "Input"],
+Cell[2079, 67, 735, 24, 81, "Output"],
+Cell[2817, 93, 199, 5, 46, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
