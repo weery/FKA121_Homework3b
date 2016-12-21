@@ -40,3 +40,4 @@ temp = fftshift(fft(wave_packet));
 plot(p,abs(temp).^2)
 hold on
 plot(p,fourier_prob)
+xlim([min(p) max(p)])
