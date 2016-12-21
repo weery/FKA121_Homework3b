@@ -20,13 +20,15 @@ n_points    = 2^12;
 x_0         = n_points/2*dx;
 dt          = 0.0001;
 dk          = 2*pi/(n_points*dx);
+v_0         = 0.1;
+a           = 0.5;
 
 % ----------- VARIABLES ------------
 x = dx*(1:n_points);
 k = dk*((1:n_points)-n_points/2);
 % Functions handles
 Gaussian_Wave_Packet = @(x)1/(pi*d^2)^(1/4)*exp(-(x-x_0).^2/(2*d^2)).*exp(1i*p_0*(x-x_0)/hbar);
-Potential_Function = @(x) -1./x;
+Potential_Function = @(x) v_0*cosh(x/a).^(-2);
 % ----
 step_three=Gaussian_Wave_Packet(x);
 plot(abs(step_three).^2)
@@ -47,5 +49,7 @@ for j=1:100
     figure(2)
     plot(k,abs(momentum).^2)
     pause(0.01)
+    
+   
 end
 

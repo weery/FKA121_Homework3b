@@ -36,16 +36,11 @@ for j=1:100
     potential = Potential_Function(x);
     exp_potential = exp(-1i/hbar.*potential*dt);
     
-    step_two=fft(step_one.*exp_potential);
+    step_two=fourier(step_one.*exp_potential);
     inv_pot = exp(-i/hbar*(hbar^2*k.^2./(2*(1:n_points)))*dt);
 
-    step_three = ifft(inv_pot.*step_two);
-    momentum = fft(step_three);
-    figure(1)
-    plot(x,abs(step_three).^2)
-    pause(0.01)
-    figure(2)
-    plot(k,abs(momentum).^2)
+    step_three = ifourier(inv_pot.*step_two);
+    plot(step_three)
     pause(0.01)
 end
 
