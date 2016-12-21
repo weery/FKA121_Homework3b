@@ -25,14 +25,6 @@ b           = 0.4;
 d           = 0.7;
 c           = 0.05; % 0.1;
 
-V_11 = @(x) 
-if (x > 0) 
-    a*(2-exp(-x/b)) 
-else
-    a*(2*exp(-x/b)) 
-end;
+tmp = V_d(0,a,b,c,d);
+[R,v]=eig(tmp);
 
-V_12 = @(x) ;
-V_21 = @(x) a*(2*exp(-x/b));
-V_22 = @(x) a*(2*exp(-x/b));
-V_d =[];
