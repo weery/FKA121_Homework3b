@@ -37,7 +37,7 @@ potential = Potential_Function(x);
 exp_potential = exp(-1i/hbar.*potential*dt);
 inv_pot = exp(-1i/hbar*(hbar^2*p.^2./(2*m))*dt);
 
-for j=1:10000
+for j=1:n_points/4
     step_one = step_three;
     
     step_two = fftshift(fft(step_one.*exp_potential));
