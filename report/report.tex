@@ -14,18 +14,26 @@
 
 \section*{Problem 1}
 
+The initial distribution of the Gaussian wave packet,
+
+\begin{equation}
+	\psi(x;0)=\frac{1}{(\pi d^2)^{1/4}} \exp(-\frac{(x-x_0)^2}{2d^2}) \exp(i p_0(x-x_0)/\hbar),
+\end{equation}
+
+where $d$ is the witdth of the packet, $x_0$ and $p_0$ are the corresponding initial position and momenta.
+
 \begin{figure}[H]
     \centering
     \captionsetup[subfigure]{justification=centering}
     \begin{subfigure}[b]{0.7\textwidth}
         \centering
-        %\includegraphics[width=\textwidth]{graphics/task1/*.png}
+        \includegraphics[width=\textwidth]{graphics/task1/position_prob.png}
 		\caption{}
 		\label{fig:*_a}
     \end{subfigure}
     \begin{subfigure}[b]{0.7\textwidth}
         \centering
-        %\includegraphics[width=\textwidth]{graphics/task1/*.png}
+        \includegraphics[width=\textwidth]{graphics/task1/momentum_prob.png}
         \caption{}
 		\label{fig:*_b}
     \end{subfigure}
@@ -33,31 +41,50 @@
     \label{fig:*}
 \end{figure}
 
+Fourier of the gaussian,
+
+\begin{align}
+	\mathcal{F}\left[\psi(x;0)\right](p) 							& =  \int_{-inf}^{inf} e^{-ipx} \psi(x;0) dx \\
+ 																	& = \frac{1}{(\pi d^2)^{1/4}}\int_{-inf}^{inf}e^{-ipx}e^{-\frac{(x-x_0)^2}{2d^2}} e^{ip_0(x-x_0)/\hbar}dx\\
+\left\{a=\frac{e^{-ipx_0}}{(\pi d^2)^{1/4}}\right\}					& = a \int_{-inf}^{inf}e^{-ip(x-x_0)}e^{-\frac{(x-x_0)^2}{2d^2}}e^{ip_0(x-x_0)/\hbar} dx\\
+\left\{
+\begin{array}{ll}
+x'	& = x-x_0\\
+dx' & = dx   \\
+x'	& \rightarrow x\\
+\end{array}
+\right\} 															& = a\int_{-inf}^{inf}e^{-i(p-p_0/\hbar)x}e^{-\frac{x^2}{2d^2}}dx \\
+\left\{
+\begin{array}{ll}
+p'		& = p-p_0/\hbar\\
+b		& = \frac{1}{2d^2}   \\
+x'		& = x-\frac{ip}{2b}\\
+dx'		& = dx\\
+x'		& \rightarrow x\\
+\end{array}
+\right\}															& = a\int_{-inf}^{inf}e^{-bx^2}e^{-p'^2/4b} dx\\
+																	& = ae^{-p'^2/4b}\int_{-inf}^{inf}e^{-bx^2} dx\\
+\left\{\int_{-int}^{int}e^{-bx^2}dx=\sqrt{\frac{\pi}{2b}}\right\}	& = ae^{-p'^2/4b}\sqrt{\frac{\pi}{2b}}\\
+																	& = (\pi d^2)^{1/4}e^{-ipx_0-(p\hbar-p_0)^2d^2/2\hbar^2}
+\end{align}
+
+
 \bibliography{references}
 \bibliographystyle{plain}
 
 \appendix
 \section{Source code}
-\subsection{\texttt{helper.c}}
-%\lstinputlisting[language=c, numbers=left]{../code/helper.c}
 
-\subsection{\texttt{rng\_gen.c}}
-%\lstinputlisting[language=c, numbers=left]{../code/rng_gen.c}
+\subsection{\texttt{main1.m}}
+\lstinputlisting[language=matlab, numbers=left]{../code/main1.m}
 
-\subsection{\texttt{Task1/main.c}}
-%\lstinputlisting[language=c, numbers=left]{../code/Task1/main.c}
+\subsection{\texttt{main2.m}}
+\lstinputlisting[language=matlab, numbers=left]{../code/main2.m}
 
-\subsection{\texttt{Task2/main.c}}
-%\lstinputlisting[language=c, numbers=left]{../code/Task2/main.c}
+\subsection{\texttt{main3.m}}
+\lstinputlisting[language=matlab, numbers=left]{../code/main3.m}
 
-\subsection{\texttt{Task3/main.c}}
-%\lstinputlisting[language=c, numbers=left]{../code/Task3/main.c}
-
-\subsection{\texttt{Task4/main.c}}
-%\lstinputlisting[language=c, numbers=left]{../code/Task4/main.c}
-
-\subsection{\texttt{Task5/main.c}}
-%\lstinputlisting[language=c, numbers=left]{../code/Task5/main.c}
-
+\subsection{\texttt{main4.m}}
+\lstinputlisting[language=matlab, numbers=left]{../code/main4.m}
 
 \end{document}
