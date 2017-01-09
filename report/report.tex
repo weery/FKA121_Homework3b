@@ -42,7 +42,7 @@ where $d$ is the witdth of the packet, $x_0$ and $p_0$ are the corresponding ini
 		\label{fig:1_b}
     \end{subfigure}
     \caption{\textit{(a):} The positive half of the wave packet in space. Given that it is a Gaussian distribution with zero mean, it is symmetrical around the y-axis. \textit{(b):} The wave packet in momentum space. The blue graph is the result obtained from numerically doing FFT on the initial wave packet. The red dashed graph is the analytical solution. Due to their similarity, the two graphs are difficult to distinguish from each other.}
-    \label{fig:*}
+    \label{fig:1}
 \end{figure}
 
 The analytical derivation of the Fourier transform is given below.
@@ -78,17 +78,29 @@ x'		& \rightarrow x\\
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.7\textwidth}
+\begin{subfigure}[t]{0.7\textwidth}
 %\includegraphics[width=\textwidth]{}
 \caption{}
 \label{fig:2_a}
 \end{subfigure}
-\begin{subfigure}{0.7\textwidth}
+
+\begin{subfigure}[t]{0.7\textwidth}
 %\includegraphics[width=\textwidth]{}
 \caption{}
 \label{fig:2_b}
 \end{subfigure}
-\caption{\textit{(a):}  \textit{(b):} }
+
+\begin{subfigure}[t]{0.7\textwidth}
+%\includegraphics[width=\textwidth]{}
+\caption{}
+\label{fig:2_c}
+\end{subfigure}
+
+\caption{
+	\textit{(a):}  
+	\textit{(b):} 
+	\textit{(c):} 
+}
 \label{fig:2}
 \end{figure}
 
@@ -101,10 +113,10 @@ Theoretical wave packet:
 d+\frac{i\hbar t}{md}
 \right)
 \right]^{-1/2}
-\cdot \exp\left[
+\exp\left[
 \frac{-\left[x-\left(p_0/m\right)t\right]^2}{•}
 \right]
-\cdot \exp\left[
+\exp\left[
 \frac{ip_0}{\hbar}\left(x-\frac{p_0t}{2m}\right)
 \right]
 \end{equation}
@@ -118,6 +130,53 @@ Travelling mean:
 
 \section*{Problem 3}
 
+\begin{figure}
+
+\centering
+\begin{subfigure}[t]{0.47\textwidth}
+%	\includegraphics[width=\textwidth]{}
+	\caption{}
+	\label{fig:3_a}
+\end{subfigure}
+\begin{subfigure}[t]{0.47\textwidth}
+%	\includegraphics[width=\textwidth]{}
+	\caption{}
+	\label{fig:3_b}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.47\textwidth}
+%	\includegraphics[width=\textwidth]{}
+	\caption{}
+	\label{fig:3_c}
+\end{subfigure}
+\begin{subfigure}[t]{0.47\textwidth}
+%	\includegraphics[width=\textwidth]{}
+	\caption{}
+	\label{fig:3_d}
+\end{subfigure}
+
+\begin{subfigure}[t]{0.47\textwidth}
+%	\includegraphics[width=\textwidth]{}
+	\caption{}
+	\label{fig:3_e}
+\end{subfigure}
+\begin{subfigure}[t]{0.47\textwidth}
+%	\includegraphics[width=\textwidth]{}
+	\caption{}
+	\label{fig:3_f}
+\end{subfigure}
+
+\caption{
+	\textit{(a):} 
+	\textit{(b):} 
+	\textit{(c):} 
+	\textit{(d):} 
+	\textit{(e):} 
+	\textit{(f):} 
+}
+\label{fig:3}
+\end{figure}
+
 In the third task we scatter the same particle against a one-dimensional Eckhart barrier, described by
 \begin{equation}
 V(x) = V_0 \cosh^{-2} (x/\alpha).
@@ -125,6 +184,9 @@ V(x) = V_0 \cosh^{-2} (x/\alpha).
 $V_0 = \unit[0.1]{eV}$ and $\alpha = \unit[2.0]{\AA}$ are used.
 
 Three cases are studied: $p_0^2/2m$ = 0.08 eV, 0.10 eV and 0.12 eV. The results are shown in Figure~\ref{fig:3}.
+
+
+
 
 
 \bibliography{references}
