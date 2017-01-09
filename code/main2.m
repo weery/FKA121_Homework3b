@@ -54,8 +54,9 @@ title('$\left| \psi (0) \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
 % Plot the rest in a separate figure
 
 figure(2); clf;
-plotHandle_1 = plot(x(plotX), abs(step_three(plotX).^2));
+plotHandle_1 = plot(x(plotX), abs(step_three(plotX)).^2);
 hold on
+plotHandle_Mean = plot([p_0*0*dt/m,p_0*0*dt/m],[0, max(abs(step_three(plotX)).^2)])
 plotHandle_2 = plot(x(plotX), abs(Gaussian_Wave_Time_Evolution(plotX,0)).^2,'--');
 hold off
 
@@ -71,6 +72,8 @@ for j=1:n_points/2
     step_two = fftshift(fft(step_one.*exp_potential));
     step_three = ifft(ifftshift(inv_pot.*step_two));
     set(plotHandle_1, 'YData', abs(step_three(plotX)).^2)
+    set(plotHandle_Mean, 'YData',[0 max(Gaussian_Time_Probability(x(plotX),j*dt))])
+    set(plotHandle_Mean, 'XData', [p_0*j*dt/m,p_0*j*dt/m])
     set(plotHandle_2, 'YData', Gaussian_Time_Probability(x(plotX),j*dt))
     waitbar(j/(n_points/2))
     pause(0.01)
