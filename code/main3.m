@@ -14,19 +14,19 @@ clear all, clc, close all
 hbar        = 1.054/1.602; % JS -> f eV s
 d           = 0.5;
 m           = 1.66/1.6*1e2;
-p_0         = sqrt(0.12*2*m);
 x_0         = 0;
 dx          = 0.1;
 n_points    = 2^10;
 dp          = 2*pi/(n_points*dx);
 dt          = 1;
-v_0=0.1;
-alpha=2.0;
+v_0         = 0.08;
+p_0         = sqrt(v_0*2*m);
+alpha       = 2.0;
 
 
 % ----------- VARIABLES ------------
 % space samples
-x = x_0+dx*(0:n_points-1);
+x = x_0+dx*((0:n_points-1)-n_points/2);
 % and the corresponding samples in momentum space
 p = ((0:n_points-1)-n_points/2)*dp;
 % Functions handles
@@ -41,10 +41,8 @@ inv_pot = exp(-1i/hbar*(hbar^2*p.^2./(2*m))*dt);
 
 for j=1:n_points/4
     step_one = step_three;
-    
     step_two = fftshift(fft(step_one.*exp_potential));
     step_three = ifft(ifftshift(inv_pot.*step_two));
-   
-    plot(x-max(x)/2,abs(ifftshift(step_three)).^2)
+    plot(x,abs(step_three).^2)
     pause(0.01)
 end
