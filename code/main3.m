@@ -21,7 +21,7 @@ dp          = 2*pi/(n_points*dx);
 dt          = 1;
 v_0         = 0.08;
 p_0         = sqrt(v_0*2*m);
-alpha       = 2.0;
+alpha       = 0.5;
 
 
 % ----------- VARIABLES ------------
@@ -39,7 +39,7 @@ potential = Potential_Function(x);
 exp_potential = exp(-1i/hbar.*potential*dt);
 inv_pot = exp(-1i/hbar*(hbar^2*p.^2./(2*m))*dt);
 
-for j=1:n_points/4
+for j=1:n_points/2
     step_one = step_three;
     step_two = fftshift(fft(step_one.*exp_potential));
     step_three = ifft(ifftshift(inv_pot.*step_two));

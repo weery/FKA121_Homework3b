@@ -63,7 +63,7 @@ xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
 title('$\left|? \psi (t = 256 \mathrm{fs})? \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
 
-for j=1:n_points/4-1
+for j=1:n_points/2
     step_one = step_three;    
     step_two = fftshift(fft(step_one.*exp_potential));
     step_three = ifft(ifftshift(inv_pot.*step_two));
