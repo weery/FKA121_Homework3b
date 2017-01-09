@@ -38,7 +38,7 @@ step_three=Gaussian_Wave_Packet(x);
 potential = Potential_Function(x);
 exp_potential = exp(-1i/hbar.*potential*dt);
 inv_pot = exp(-1i/hbar*(hbar^2*p.^2./(2*m))*dt);
-waitbar(0,'Calculating...')
+bar = waitbar(0,'Calculating...');
 for j=1:n_points/2
     step_one = step_three;
     step_two = fftshift(fft(step_one.*exp_potential));
@@ -46,8 +46,16 @@ for j=1:n_points/2
     waitbar(j/(n_points/2))
 end
 
-plot(x,abs(step_three).^2)
+final_prob = abs(step_three).^2;
+
+plot(x, final_prob)
+close(bar)
 pause(0.01)
+
+% -- Compute the integrals --
+left_integral = dx*sum(final_prob(1:n_points/2-1))
+right_integral = dx*sum(final_prob(n_points/2+1:end))
+
 
 xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
