@@ -15,12 +15,12 @@ hbar        = 1.054/1.602; % JS -> f eV s
 d           = 0.5;
 m           = 1.66/1.6*1e2;
 x_0         = 0;
+p_0         = sqrt(0.1*2*m);
 dx          = 0.1;
 n_points    = 2^10;
 dp          = 2*pi/(n_points*dx);
 dt          = 1;
-v_0         = 0.08;
-p_0         = sqrt(v_0*2*m);
+v_0         = 0.10;
 alpha       = 0.5;
 
 
@@ -38,11 +38,18 @@ step_three=Gaussian_Wave_Packet(x);
 potential = Potential_Function(x);
 exp_potential = exp(-1i/hbar.*potential*dt);
 inv_pot = exp(-1i/hbar*(hbar^2*p.^2./(2*m))*dt);
-
+waitbar(0,'Calculating...')
 for j=1:n_points/2
     step_one = step_three;
     step_two = fftshift(fft(step_one.*exp_potential));
     step_three = ifft(ifftshift(inv_pot.*step_two));
-    plot(x,abs(step_three).^2)
-    pause(0.01)
+    waitbar(j/(n_points/2))
 end
+
+plot(x,abs(step_three).^2)
+pause(0.01)
+
+xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
+ylabel('Probability distribution', 'fontsize', 14)
+s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+title(s, 'interpreter', 'latex', 'fontsize', 18)

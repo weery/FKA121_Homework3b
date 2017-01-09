@@ -17,7 +17,7 @@ m           = 1.66/1.6*1e2;
 p_0         = sqrt(0.1*2*m);
 x_0         = 0;
 dx          = 0.1;
-n_points    = 2^11;
+n_points    = 2^10;
 dp          = 2*pi/(n_points*dx);
 dt          = 1;
 
@@ -61,7 +61,10 @@ hold off
 
 xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
-title('$\left|? \psi (t = 256 \mathrm{fs})? \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
+s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+title(s, 'interpreter', 'latex', 'fontsize', 18)
+
+bar= waitbar(0,'Calculating...')
 
 for j=1:n_points/2
     step_one = step_three;    
@@ -69,8 +72,15 @@ for j=1:n_points/2
     step_three = ifft(ifftshift(inv_pot.*step_two));
     set(plotHandle_1, 'YData', abs(step_three(plotX)).^2)
     set(plotHandle_2, 'YData', Gaussian_Time_Probability(x(plotX),j*dt))
+    waitbar(j/(n_points/2))
     pause(0.01)
 end
+
+close(bar)
+
+s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+title(s, 'interpreter', 'latex', 'fontsize', 18)
+
 
 figure(3); clf;
 plotHandle_1 = plot(p(plotX)/p_0, abs(fftshift(fft(step_three(plotX)))).^2);
@@ -79,4 +89,5 @@ plotHandle_2 = plot(p(plotX)/p_0, abs(fftshift(fft(Gaussian_Wave_Time_Evolution(
 hold off
 xlabel('P/p_0 / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
-title('$\left|? \psi (t = 256 \mathrm{fs})? \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
+s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+title(s, 'interpreter', 'latex', 'fontsize', 18)
