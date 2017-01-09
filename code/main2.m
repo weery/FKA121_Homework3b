@@ -17,7 +17,7 @@ m           = 1.66/1.6*1e2;
 p_0         = sqrt(0.1*2*m);
 x_0         = 0;
 dx          = 0.1;
-n_points    = 2^10;
+n_points    = 2^12;
 dp          = 2*pi/(n_points*dx);
 dt          = 1;
 
@@ -56,7 +56,7 @@ title('$\left| \psi (0) \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
 figure(2); clf;
 plotHandle_1 = plot(x(plotX), abs(step_three(plotX)).^2);
 hold on
-plotHandle_Mean = plot([p_0*0*dt/m,p_0*0*dt/m],[0, max(abs(step_three(plotX)).^2)])
+plotHandle_Mean = plot([p_0*0*dt/m,p_0*0*dt/m],[0, max(abs(step_three(plotX)).^2)]);
 plotHandle_2 = plot(x(plotX), abs(Gaussian_Wave_Time_Evolution(plotX,0)).^2,'--');
 hold off
 
@@ -65,7 +65,28 @@ ylabel('Probability distribution', 'fontsize', 14)
 s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
 
-bar= waitbar(0,'Calculating...')
+bar= waitbar(0,'Calculating...');
+
+final_gaussian = abs(fftshift(fft(step_three(plotX)))).^2;
+peak = max(final_gaussian);
+
+% Find left threshold
+left_point = 1;
+for idx = 1:length(final_gaussian)
+   if (final_gaussian(idx) > peak/sqrt(2))
+       left_point = idx;
+       break;
+   end
+end
+right_point = left_point+1;
+for idx = left_point:length(final_gaussian)
+   if (final_gaussian(idx) < peak/sqrt(2))
+       right_point = idx;
+       break;
+   end
+end
+
+gauss_width = p(right_point)-p(left_point)
 
 for j=1:n_points/2
     step_one = step_three;    
@@ -85,8 +106,10 @@ s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
 
 
+final_gaussian = abs(fftshift(fft(step_three(plotX)))).^2;
+
 figure(3); clf;
-plotHandle_1 = plot(p(plotX)/p_0, abs(fftshift(fft(step_three(plotX)))).^2);
+plotHandle_1 = plot(p(plotX)/p_0, final_gaussian);
 hold on
 plotHandle_2 = plot(p(plotX)/p_0, abs(fftshift(fft(Gaussian_Wave_Time_Evolution(x(plotX),j*dt)))).^2,'--');
 hold off
@@ -94,3 +117,27 @@ xlabel('$P/p_0$', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
 s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
+
+
+% --- COMPUTE WIDTH OF FINAL GAUSSIAN ---
+
+peak = max(final_gaussian);
+
+% Find left threshold
+left_point = 1;
+for idx = 1:length(final_gaussian)
+   if (final_gaussian(idx) > peak/sqrt(2))
+       left_point = idx;
+       break;
+   end
+end
+right_point = left_point+1;
+for idx = left_point:length(final_gaussian)
+   if (final_gaussian(idx) < peak/sqrt(2))
+       right_point = idx;
+       break;
+   end
+end
+
+gauss_width = p(right_point)-p(left_point)
+
