@@ -114,14 +114,14 @@ left_color = [0 0 0];
 right_color = [0 0 0];
 set(fig,'defaultAxesColorOrder',[left_color; right_color]);
 yyaxis left
-plotHandle_wPosition = plot(gaussian_width_position/2,'b');
+plotHandle_wPosition = plot(gaussian_width_position,'b');
 hold on
-plotHandle_wPosition_Theoretical = plot(Theoretical_Width_Position(((1:length(gaussian_width_position))-1)*dt),'--b');
+plotHandle_wPosition_Theoretical = plot(Theoretical_Width_Position(((1:length(gaussian_width_position))-1)*dt),'--r');
 hold off
 xlabel('$itererings variabel$', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('\Delta X(t)', 'fontsize', 14)
 yyaxis right 
-plotHandle_wMomentum = plot(gaussian_width_momentum/2,'r');
+plotHandle_wMomentum = plot(gaussian_width_momentum,'r');
 hold on
 plotHandle_wMomentum_Theoretical = plot(Theoretical_Width_Momentum(((1:length(gaussian_width_position))-1)*dt),'--g');
 hold off
