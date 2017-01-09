@@ -25,13 +25,6 @@ The initial distribution of the Gaussian wave packet is given by
 where $d$ is the witdth of the packet, $x_0$ and $p_0$ are the corresponding initial position and momenta.
 
 
-%hbar        = 0.6579;
-%m           = 103.7500;
-%$p_0$         = 4.5552;
-
-%using $\AA$, fs and eV.
-
-
 
 \begin{figure}[H]
     \centering
@@ -83,6 +76,7 @@ x'		& \rightarrow x\\
 
 \section*{Problem 2}
 
+<<<<<<< Updated upstream
 In the second task we simulated the movement of the same atom, moving in free space, using the split-operator FFT method and comparing the numerical result to analytical results.
 
 
@@ -114,6 +108,30 @@ $V_0 = \unit[0.1]{eV}$ and $\alpha = \unit[2.0]{\AA}$ are used.
 Three cases are studied: $p_0^2/2m$ = 0.08 eV, 0.10 eV and 0.12 eV. The results are shown in Figure~\ref{fig:3}.
 
 
+=======
+Theoretical wave packet 
+
+\begin{equation}
+\psi(x,t) = \left[
+\pi^{1/2}\left(
+d+\frac{i\hbar t}{md}
+\right)
+\right]^{-1/2}
+\cdot \exp\left[
+\frac{-\left[x-\left(p_0/m\right)t\right]^2}{•}
+\right]
+\cdot \exp\left[
+\frac{ip_0}{\hbar}\left(x-\frac{p_0t}{2m}\right)
+\right]
+\end{equation}
+
+
+Travelling mean
+
+\begin{equation}
+\left<X\right>\frac{p_0t}{m}
+\end{equation}
+>>>>>>> Stashed changes
 
 \bibliography{references}
 \bibliographystyle{plain}

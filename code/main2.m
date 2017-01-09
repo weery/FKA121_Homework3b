@@ -58,6 +58,8 @@ plotHandle_1 = plot(x(plotX), abs(step_three(plotX)).^2);
 hold on
 plotHandle_Mean = plot([p_0*0*dt/m,p_0*0*dt/m],[0, max(abs(step_three(plotX)).^2)]);
 plotHandle_2 = plot(x(plotX), abs(Gaussian_Wave_Time_Evolution(plotX,0)).^2,'--');
+plotHandle_Left =plot([0,0],[0,max(abs(step_three(plotX)).^2)],'--')
+plotHandle_Right =plot([0,0],[0,max(abs(step_three(plotX)).^2)],'--')
 hold off
 
 xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
@@ -68,23 +70,7 @@ title(s, 'interpreter', 'latex', 'fontsize', 18)
 bar= waitbar(0,'Calculating...');
 
 final_gaussian = abs(fftshift(fft(step_three(plotX)))).^2;
-peak = max(final_gaussian);
-
-% Find left threshold
-left_point = 1;
-for idx = 1:length(final_gaussian)
-   if (final_gaussian(idx) > peak/sqrt(2))
-       left_point = idx;
-       break;
-   end
-end
-right_point = left_point+1;
-for idx = left_point:length(final_gaussian)
-   if (final_gaussian(idx) < peak/sqrt(2))
-       right_point = idx;
-       break;
-   end
-end
+final_gaussian = abs(step_three(plotX)).^2;
 
 gauss_width = p(right_point)-p(left_point)
 
@@ -107,6 +93,7 @@ title(s, 'interpreter', 'latex', 'fontsize', 18)
 
 
 final_gaussian = abs(fftshift(fft(step_three(plotX)))).^2;
+final_gaussian = abs(step_three(plotX)).^2;
 
 figure(3); clf;
 plotHandle_1 = plot(p(plotX)/p_0, final_gaussian);
