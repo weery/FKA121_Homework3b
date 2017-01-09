@@ -14,20 +14,22 @@
 
 \section*{Problem 1}
 
-The initial distribution of the Gaussian wave packet,
+In this first problem we use FFT to transition between the space and momentum wave packet for a hydrogen atom. We also compare the wave packet obtained to the analytically derived packet, via Fourier transform.
 
+It was suggested that \AA, fs and eV should be the units used for length, time and energy respectively. Expressed in these units the mass of the atom has the approximate numerical value 103.7500 and the expected momentum $p_0$ has the numerical value 4.5552. The constant $\hbar$ gets the approximate numerical value 0.6579.
+
+The initial distribution of the Gaussian wave packet is given by
 \begin{equation}
 	\psi(x;0)=\frac{1}{(\pi d^2)^{1/4}} \exp(-\frac{(x-x_0)^2}{2d^2}) \exp(i p_0(x-x_0)/\hbar),
 \end{equation}
-
 where $d$ is the witdth of the packet, $x_0$ and $p_0$ are the corresponding initial position and momenta.
 
 
-hbar        = 0.6579;
-m           = 103.7500;
-$p_0$         = 4.5552;
+%hbar        = 0.6579;
+%m           = 103.7500;
+%$p_0$         = 4.5552;
 
-using $\AA$, fs and eV.
+%using $\AA$, fs and eV.
 
 
 
@@ -38,21 +40,21 @@ using $\AA$, fs and eV.
         \centering
         \includegraphics[width=\textwidth]{graphics/task1/position_prob.png}
 		\caption{}
-		\label{fig:*_a}
+		\label{fig:1_a}
     \end{subfigure}
     \begin{subfigure}[b]{0.7\textwidth}
         \centering
         \includegraphics[width=\textwidth]{graphics/task1/momentum_prob.png}
         \caption{}
-		\label{fig:*_b}
+		\label{fig:1_b}
     \end{subfigure}
-    \caption{\textit{(a):} * \textit{(b):} *}
+    \caption{\textit{(a):} The positive half of the wave packet in space. Given that it is a Gaussian distribution with zero mean, it is symmetrical around the y-axis. \textit{(b):} The wave packet in momentum space. The blue graph is the result obtained from numerically doing FFT on the initial wave packet. The red dashed graph is the analytical solution.}
     \label{fig:*}
 \end{figure}
 
-Fourier of the gaussian,
-
-\begin{align}
+The analytical derivation of the Fourier transform is given below.
+\begin{equation}
+\begin{split}
 	\mathcal{F}\left[\psi(x;0)\right](p) 							& =  \int_{-inf}^{inf} e^{-ipx} \psi(x;0) dx \\
  																	& = \frac{1}{(\pi d^2)^{1/4}}\int_{-inf}^{inf}e^{-ipx}e^{-\frac{(x-x_0)^2}{2d^2}} e^{ip_0(x-x_0)/\hbar}dx\\
 \left\{a=\frac{e^{-ipx_0}}{(\pi d^2)^{1/4}}\right\}					& = a \int_{-inf}^{inf}e^{-ip(x-x_0)}e^{-\frac{(x-x_0)^2}{2d^2}}e^{ip_0(x-x_0)/\hbar} dx\\
@@ -75,7 +77,8 @@ x'		& \rightarrow x\\
 																	& = ae^{-p'^2/4b}\int_{-inf}^{inf}e^{-bx^2} dx\\
 \left\{\int_{-int}^{int}e^{-bx^2}dx=\sqrt{\frac{\pi}{2b}}\right\}	& = ae^{-p'^2/4b}\sqrt{\frac{\pi}{2b}}\\
 																	& = (\pi d^2)^{1/4}e^{-ipx_0-(p\hbar-p_0)^2d^2/2\hbar^2}
-\end{align}
+\end{split}
+\end{equation}
 
 
 \bibliography{references}
