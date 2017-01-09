@@ -90,7 +90,7 @@ plotHandle_1 = plot(p(plotX)/p_0, abs(fftshift(fft(step_three(plotX)))).^2);
 hold on
 plotHandle_2 = plot(p(plotX)/p_0, abs(fftshift(fft(Gaussian_Wave_Time_Evolution(x(plotX),j*dt)))).^2,'--');
 hold off
-xlabel('P/p_0 / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
+xlabel('$P/p_0$', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
 s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
