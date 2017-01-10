@@ -12,37 +12,30 @@
 
 \section*{Introduction}
 
-In quantum mechanics, the time evolution of a state vector $\left|\psi(t)\right>$ is given by the time independent schrödinger equation,
-
+In quantum mechanics, the time evolution of a state vector $\left|\psi(t)\right>$ is given by the time independent schr\"odinger equation,
 \begin{equation}
-i\hbar\frac{\partial}{\partial t}\left|\psi(t)\right> = \hat{H}\left|\psi(t)\right>
-\end{equation}.
-
+i\hbar\frac{\partial}{\partial t}\left|\psi(t)\right> = \hat{H}\left|\psi(t)\right>.
+\end{equation}
 This equation can be written using the initial state vector and a time evolution operator $\hat{U}$,
-
 \begin{equation}
 \left|\psi(t)\right> = \hat{U}\left|\psi(0)\right>,
 \end{equation}
-
 where the time evolution operator is given by $\hat{U}=exp\left(-\frac{i}{\hbar}\hat{H}t\right)$.
 
 To numerically calculate the evolution of the state vector a short time propagator can be applied repeatedly,
-
 \begin{equation}
 \left|\psi(t+\Delta t)\right> = \hat{U}(t)\left|\psi(t)\right>.
 \end{equation}
 
-For this problem we can split the Hamiltonian operator $\hat{H}=\hat{T}+\hat{V}$. These operators act on different coordinates, the momentum $p$ and the position $x$. Since these are the Fourier transforms of each other, we can calculate the time evolution operator in each domain by taking the Fourier transform back and forth and by making some approximations. The final form of the time step can then be written as the so called split operator FFT method,
-
+For this problem we can split the Hamiltonian operator $\hat{H}=\hat{T}+\hat{V}$. These operators are expressed more easily in different domains, momentum, $p$, space and position, $x$, space. Since we can transition between these using Fourier transforms, we can calculate the time evolution operator in each domain by taking the Fourier transform back and forth and by making some approximations. The final form of the time step can then be written as the so called split-operator FFT method,
 \begin{equation}
 \psi(x;t+\Delta t)= \mathcal{F}^{-1}\left[\exp\left(-\frac{i}{\hbar}\frac{p'^{2}}{2m}\right)\mathcal{F}\left[\exp\left(-\frac{i}{\hbar}V(x')\Delta t\right)\psi(x',t)\right]\right]
 \end{equation}
-
-where $\mathcal{F}$ is the Fourier transform\cite{probdesc}. 
+where $\mathcal{F}$ is the Fourier transform \cite{probdesc}. 
 
 \section*{Problem 1}
 
-In this first problem we use FFT to transition between the space and momentum wave packet for a free hydrogen atom. We also compare the wave packet obtained to the analytically derived packet, via Fourier transform.
+In this first problem we use FFT to transition between the position and momentum wave packet for a free hydrogen atom. We also compare the wave packet obtained to the analytically derived expression, via Fourier transform.
 
 It was suggested that \AA, fs and eV should be the units used for length, time and energy respectively. Expressed in these units the mass of the atom has the approximate numerical value 103.7500 and the constant $\hbar$ gets the approximate numerical value 0.6579. The mean of the momentum $p_0$ is set so that $p_0^2/2m=\unit[0.1]{eV}$ which gives the numerical value 4.5552.
 
@@ -135,7 +128,11 @@ In Fig. \ref{fig:1} we can see the similarities of the analytic and numerical re
 
 In the second task we simulated the movement of the same atom, moving in free space, using the split-operator FFT method and comparing the numerical result to analytical results.
 
-Theoretical wave packet:
+The split-operator method is used the way described in the Introduction. Running the Matlab shows the actual time evolution, however the probability distribution for a given time in both the position and momentum domain can be found in Figure~\ref{fig:2}.
+
+Figure~\ref{fig:2_c} also shows the time evolution of the width of the gaussian for both domains. As we can see, the width in the position domain increases as $y = x$ and $y = 1/x$ in the momentum domain, which is the expected behaviour. We also note that the numerical results align with the analytical ones very well.
+
+The theoretical wave packet in the position domain is given by the expression
 \begin{equation}
 \psi(x,t) = \left[
 \pi^{1/2}\left(
@@ -147,13 +144,13 @@ d+\frac{i\hbar t}{md}
 \right]
 \exp\left[
 \frac{ip_0}{\hbar}\left(x-\frac{p_0t}{2m}\right)
-\right]
+\right],
 \end{equation}
-
-Travelling mean:
+yielding the wave packet,
 \begin{equation}
-\left<X\right>\frac{p_0t}{m}
+\psi(p,t) = \frac{\sqrt{2} \pi^{1/4} \exp \left(-\frac{d^2 (\text{p0}-p \hbar )^2}{2 \hbar ^2}-\frac{i p^2 t \hbar }{2 m}\right)}{\sqrt{\frac{m}{d^2 m+i t \hbar }} \sqrt{d+\frac{i t \hbar }{d m}}},
 \end{equation}
+in the momentum domain.
 
 
 
