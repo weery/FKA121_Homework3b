@@ -15,7 +15,8 @@ hbar        = 1.054/1.602; % JS -> f eV s
 d           = 0.5;
 m           = 1.66/1.6*1e2;
 x_0         = 0;
-p_0         = sqrt(0.1*2*m);
+e           = 0.12;
+p_0         = sqrt(e*2*m);
 dx          = 0.1;
 n_points    = 2^10;
 dp          = 2*pi/(n_points*dx);
@@ -59,5 +60,5 @@ right_integral = dx*sum(final_prob(n_points/2+1:end))
 
 xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
-s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+s=sprintf('$\\alpha = %.1f$, $p_0^2/2m = %.2f$, $\\left| \\psi (x,t = %i \\; \\mathrm{fs}) \\right|^2$',alpha,e,j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)

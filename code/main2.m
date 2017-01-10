@@ -51,7 +51,6 @@ plotX=1:n_points;
 figure(1); clf;
 plotHandle_1 = plot(x(plotX), abs(step_three(plotX)).^2);
 hold on
-plotHandle_Mean = plot([p_0*0*dt/m,p_0*0*dt/m],[0, max(abs(step_three(plotX)).^2)]);
 plotHandle_2 = plot(x(plotX), abs(Gaussian_Wave_Time_Evolution(plotX,0)).^2,'--');
 hold off
 
@@ -59,7 +58,7 @@ xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
 s=sprintf('Distribution of wave packet, $\\left| \\psi (x;t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
-legend({'Numerical distribution','Analytic Mean','Analytic distribution'},'interpreter','latex','location','northwest')
+legend({'Numerical distribution','Analytic distribution'},'interpreter','latex','location','northwest')
 
 
 gaussian_momentum = abs(fftshift(fft(step_three(plotX)))).^2;
@@ -84,8 +83,6 @@ for j=1:n_points/2
 end
 
 set(plotHandle_1, 'YData', abs(step_three(plotX)).^2)
-set(plotHandle_Mean, 'YData',[0 max(Gaussian_Time_Probability(x(plotX),j*dt))])
-set(plotHandle_Mean, 'XData', [p_0*j*dt/m,p_0*j*dt/m])
 set(plotHandle_2, 'YData', Gaussian_Time_Probability(x(plotX),j*dt))
 
 s=sprintf('Distribution of wave packet, $\\left| \\psi (x;t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
@@ -99,7 +96,7 @@ hold on
 % CHANGE TO ANALYTIC FOURIER
 plotHandle_2 = plot(p(plotX)/p_0, abs(fftshift(fft(Gaussian_Wave_Time_Evolution(x(plotX),j*dt)))).^2,'--');
 hold off
-xlabel('NEED ANALYTIC FOURIER OF WAVE $P/p_0$', 'interpreter', 'latex', 'fontsize', 14)
+xlabel('$P/p_0$', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
 s=sprintf('Distribution of wave packet, $\\left| \\psi (p;t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
