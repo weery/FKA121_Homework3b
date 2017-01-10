@@ -108,19 +108,19 @@ In Fig. \ref{fig:1} we can see the similarities of the analytic and numerical re
 \begin{figure}[H]
 \centering
 \begin{subfigure}[t]{0.7\textwidth}
-\includegraphics[width=\textwidth]{graphics/task2/position.png}
+\includegraphics[width=\textwidth]{graphics/Task2/position.png}
 \caption{}
 \label{fig:2_a}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.7\textwidth}
-\includegraphics[width=\textwidth]{graphics/task2/momentum.png}
+\includegraphics[width=\textwidth]{graphics/Task2/momentum.png}
 \caption{}
 \label{fig:2_b}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.7\textwidth}
-\includegraphics[width=\textwidth]{graphics/task2/width_evolution.png}
+\includegraphics[width=\textwidth]{graphics/Task2/width_evolution.png}
 \caption{}
 \label{fig:2_c}
 \end{subfigure}
@@ -135,7 +135,7 @@ In Fig. \ref{fig:1} we can see the similarities of the analytic and numerical re
 
 In the second task we simulated the movement of the same atom, moving in free space, using the split-operator FFT method and comparing the numerical result to analytical results.
 
-The theoretical wave packet in the space domain according to \cite{Shankar:1994} is given by
+Theoretical wave packet:
 \begin{equation}
 \psi(x,t) = \left[
 \pi^{1/2}\left(
@@ -147,68 +147,65 @@ d+\frac{i\hbar t}{md}
 \right]
 \exp\left[
 \frac{ip_0}{\hbar}\left(x-\frac{p_0t}{2m}\right)
-\right],
+\right]
 \end{equation}
-yielding the momemntum wave packet
+
+Travelling mean:
 \begin{equation}
-\psi(p,t) = \frac{\sqrt{2} \sqrt[4]{\pi } \exp \left(-\frac{d^2 (\text{p0}-p \hbar )^2}{2 \hbar ^2}-\frac{i p^2 t \hbar }{2 m}\right)}{\sqrt{\frac{m}{d^2 m+i t \hbar }} \sqrt{d+\frac{i t \hbar }{d m}}}
+\left<X\right>\frac{p_0t}{m}
 \end{equation}
-using the analytical Fourier transform.
 
 
 
 \section*{Problem 3}
 
-\begin{figure}
+\begin{figure}[H]
 
 \centering
 \begin{subfigure}[t]{0.47\textwidth}
-%	\includegraphics[width=\textwidth]{}
+	\includegraphics[width=\textwidth]{graphics/Task3/a1e1.png}
 	\caption{}
 	\label{fig:3_a}
 \end{subfigure}
 \begin{subfigure}[t]{0.47\textwidth}
-%	\includegraphics[width=\textwidth]{}
+	\includegraphics[width=\textwidth]{graphics/Task3/a2e1.png}
 	\caption{}
 	\label{fig:3_b}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.47\textwidth}
-%	\includegraphics[width=\textwidth]{}
+	\includegraphics[width=\textwidth]{graphics/Task3/a1e2.png}
 	\caption{}
 	\label{fig:3_c}
 \end{subfigure}
 \begin{subfigure}[t]{0.47\textwidth}
-%	\includegraphics[width=\textwidth]{}
+	\includegraphics[width=\textwidth]{graphics/Task3/a2e2.png}
 	\caption{}
 	\label{fig:3_d}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.47\textwidth}
-%	\includegraphics[width=\textwidth]{}
+	\includegraphics[width=\textwidth]{graphics/Task3/a1e3.png}
 	\caption{}
 	\label{fig:3_e}
 \end{subfigure}
 \begin{subfigure}[t]{0.47\textwidth}
-%	\includegraphics[width=\textwidth]{}
+	\includegraphics[width=\textwidth]{graphics/Task3/a2e3.png}
 	\caption{}
 	\label{fig:3_f}
 \end{subfigure}
 
-\caption{
-	\textit{(a):} 
-	\textit{(b):} 
-	\textit{(c):} 
-	\textit{(d):} 
-	\textit{(e):} 
-	\textit{(f):} 
-}
+\caption{The scattered probability densities for the 6 different cases.}
 \label{fig:3}
 \end{figure}
 
-\begin{table}
+\begin{table}[H]
 	\centering
+<<<<<<< Updated upstream
 	\caption{Table of the probabilities of scattering ($n_<$) and transmission ($n_>$) through the Eckhart barrier. All entries have been rounded to four significant numbers, except for $\alpha = 2.0$, $p_0^2/2m = 0.12$, resulting in that they don't necessarily sum to unity.}
+=======
+	\caption{Table of the probabilities of scattering ($n_<$) and transmission ($n_>$) through the Eckhart barrier.}
+>>>>>>> Stashed changes
 	\begin{tabular}{c|cc|cc}
 					& \multicolumn{4}{c}{\textbf{Probability}} \\
 					& \multicolumn{2}{c|}{$\alpha = 0.5$} & \multicolumn{2}{c}{$\alpha = 2.0$} \\
@@ -222,9 +219,11 @@ using the analytical Fourier transform.
 
 In the third task we scatter the same particle against a one-dimensional Eckhart barrier, described by
 \begin{equation}
-V(x) = V_0 \cosh^{-2} (x/\alpha).
+V(x) = V_0 \cosh^{-2} (x/\alpha),
 \end{equation}
-$V_0 = \unit[0.1]{eV}$ and $\alpha = \unit[2.0]{\AA}$ are used.
+
+
+with $V_0 = \unit[0.1]{eV}$.
 
 Three cases are studied: $p_0^2/2m$ = 0.08 eV, 0.10 eV and 0.12 eV. The results are shown in Figure~\ref{fig:3}.
 
