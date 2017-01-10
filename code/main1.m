@@ -51,6 +51,7 @@ xlabel('Momentum / $p_0$', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
 L = legend('Numerically obtained via FFT', 'Analytically obtained via FT');
 set(L, 'location', 'northwest')
+title('Distribution of wave packet, $|\psi(p;0)|^2$','interpreter','latex','fontsize',18)
 
 % Plot prob.distr. in normal space
 figure(2); clf;
@@ -58,3 +59,4 @@ plot(x, prob)
 xlim([-2 2])
 ylabel('Probability Distribution', 'fontsize', 14)
 xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
+title('Distribution of wave packet, $|\psi(x;0)|^2$','interpreter','latex','fontsize',18)

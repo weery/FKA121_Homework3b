@@ -12,40 +12,48 @@
 
 \section*{Introduction}
 
+In quantum mechanics, the time evolution of a state vector $\left|\psi(t)\right>$ is given by the time independent schrödinger equation,
+
+\begin{equation}
+i\hbar\frac{\partial}{\partial t}\left|\psi(t)\right> = \hat{H}\left|\psi(t)\right>
+\end{equation}.
+
+This equation can be written using the initial state vector and a time evolution operator $\hat{U}$,
+
+\begin{equation}
+\left|\psi(t)\right> = \hat{U}\left|\psi(0)\right>,
+\end{equation}
+
+where the time evolution operator is given by $\hat{U}=exp\left(-\frac{i}{\hbar}\hat{H}t\right)$.
+
+To numerically calculate the evolution of the state vector a short time propagator can be applied repeatedly,
+
+\begin{equation}
+\left|\psi(t+\Delta t)\right> = \hat{U}(t)\left|\psi(t)\right>.
+\end{equation}
+
+For this problem we can split the Hamiltonian operator $\hat{H}=\hat{T}+\hat{V}$. These operators act on different coordinates, the momentum $p$ and the position $x$. Since these are the Fourier transforms of each other, we can calculate the time evolution operator in each domain by taking the Fourier transform back and forth and by making some approximations. The final form of the time step can then be written as the so called split operator FFT method,
+
+\begin{equation}
+\psi(x;t+\Delta t)= \mathcal{F}^{-1}\left[\exp\left(-\frac{i}{\hbar}\frac{p'^{2}}{2m}\right)\mathcal{F}\left[\exp\left(-\frac{i}{\hbar}V(x')\Delta t\right)\psi(x',t)\right]\right]
+\end{equation}
+
+where $\mathcal{F}$ is the Fourier transform\cite{probdesc}. 
+
 \section*{Problem 1}
 
-In this first problem we use FFT to transition between the space and momentum wave packet for a hydrogen atom. We also compare the wave packet obtained to the analytically derived packet, via Fourier transform.
+In this first problem we use FFT to transition between the space and momentum wave packet for a free hydrogen atom. We also compare the wave packet obtained to the analytically derived packet, via Fourier transform.
 
-It was suggested that \AA, fs and eV should be the units used for length, time and energy respectively. Expressed in these units the mass of the atom has the approximate numerical value 103.7500 and the expected momentum $p_0$ has the numerical value 4.5552. The constant $\hbar$ gets the approximate numerical value 0.6579.
+It was suggested that \AA, fs and eV should be the units used for length, time and energy respectively. Expressed in these units the mass of the atom has the approximate numerical value 103.7500 and the constant $\hbar$ gets the approximate numerical value 0.6579. The mean of the momentum $p_0$ is set so that $p_0^2/2m=\unit[0.1]{eV}$ which gives the numerical value 4.5552.
 
 The initial distribution of the Gaussian wave packet is given by
 \begin{equation}
-	\psi(x;0)=\frac{1}{(\pi d^2)^{1/4}} \exp(-\frac{(x-x_0)^2}{2d^2}) \exp(i p_0(x-x_0)/\hbar),
+	\psi(x;0)=\frac{1}{(\pi d^2)^{1/4}} \exp\left(-\frac{(x-x_0)^2}{2d^2}\right) \exp(i p_0(x-x_0)/\hbar),
 \end{equation}
-where $d$ is the witdth of the packet, $x_0$ and $p_0$ are the corresponding initial position and momenta.
+where $d$ is the width of the packet, $x_0$ and $p_0$ are the corresponding initial expected position and momenta.
 
+To be able to see the distribution of the wave packet we use the probability distribution $n(x)=|\psi(x)|^2$. If we discretizise this wave packet we can use a FFT algorithm (Fast Fourier Transform) to receive the corresponding wave in momentum space. Another way to receive the momentum wave is by taking the Fourier transform of the analytic expression. Since The Fourier transform of a Gaussian is another Gaussian we retrieve the same form of the wave with different parameters. The analytical derivation of the Fourier transform is given below.
 
-
-\begin{figure}[H]
-    \centering
-    \captionsetup[subfigure]{justification=centering}
-    \begin{subfigure}[b]{0.8\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{graphics/task1/position_prob.png}
-		\caption{}
-		\label{fig:1_a}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.8\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{graphics/task1/momentum_prob.png}
-        \caption{}
-		\label{fig:1_b}
-    \end{subfigure}
-    \caption{\textit{(a):} The positive half of the wave packet in space. Given that it is a Gaussian distribution with zero mean, it is symmetrical around the y-axis. \textit{(b):} The wave packet in momentum space. The blue graph is the result obtained from numerically doing FFT on the initial wave packet. The red dashed graph is the analytical solution. Due to their similarity, the two graphs are difficult to distinguish from each other.}
-    \label{fig:1}
-\end{figure}
-
-The analytical derivation of the Fourier transform is given below.
 \begin{equation}
 \begin{split}
 	\mathcal{F}\left[\psi(x;0)\right](p) 							& =  \int_{-inf}^{inf} e^{-ipx} \psi(x;0) dx \\
@@ -73,25 +81,46 @@ x'		& \rightarrow x\\
 \end{split}
 \end{equation}
 
+In Fig. \ref{fig:1} we can see the similarities of the analytic and numerical results.
+
+\begin{figure}[H]
+    \centering
+    \captionsetup[subfigure]{justification=centering}
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/task1/position_prob.png}
+		\caption{}
+		\label{fig:1_a}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.8\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{graphics/task1/momentum_prob.png}
+        \caption{}
+		\label{fig:1_b}
+    \end{subfigure}
+    \caption{\textit{(a):} The positive half of the wave packet in space. Given that it is a Gaussian distribution with zero mean, it is symmetrical around the y-axis. \textit{(b):} The wave packet in momentum space. The blue graph is the result obtained from numerically doing FFT on the initial wave packet. The red dashed graph is the analytical solution. Due to their similarity, the two graphs are difficult to distinguish from each other.}
+    \label{fig:1}
+\end{figure}
+
 
 \section*{Problem 2}
 
-\begin{figure}
+\begin{figure}[H]
 \centering
 \begin{subfigure}[t]{0.7\textwidth}
-%\includegraphics[width=\textwidth]{}
+\includegraphics[width=\textwidth]{graphics/Task2/position.png}
 \caption{}
 \label{fig:2_a}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.7\textwidth}
-%\includegraphics[width=\textwidth]{}
+\includegraphics[width=\textwidth]{graphics/Task2/momentum.png}
 \caption{}
 \label{fig:2_b}
 \end{subfigure}
 
 \begin{subfigure}[t]{0.7\textwidth}
-%\includegraphics[width=\textwidth]{}
+\includegraphics[width=\textwidth]{graphics/Task2/width_evolution.png}
 \caption{}
 \label{fig:2_c}
 \end{subfigure}

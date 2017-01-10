@@ -44,18 +44,11 @@ exp_potential = exp(-1i/hbar.*potential*dt);
 inv_pot = exp(-1i/hbar*(hbar^2*p.^2./(2*m))*dt);
 
 
-% Plot initial prob.distr.
-figure(1); clf;
-plotX=1:n_points;
-plot(x(plotX), abs(step_three(plotX).^2))
-xlim([0 2])
-xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
-ylabel('Probability distribution', 'fontsize', 14)
-title('$\left| \psi (0) \right|^2$', 'interpreter', 'latex', 'fontsize', 18)
 
+plotX=1:n_points;
 % Plot the rest in a separate figure
 
-figure(2); clf;
+figure(1); clf;
 plotHandle_1 = plot(x(plotX), abs(step_three(plotX)).^2);
 hold on
 plotHandle_Mean = plot([p_0*0*dt/m,p_0*0*dt/m],[0, max(abs(step_three(plotX)).^2)]);
@@ -64,8 +57,9 @@ hold off
 
 xlabel('Position / [\AA]', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
-s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+s=sprintf('Distribution of wave packet, $\\left| \\psi (x;t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
+legend({'Numerical distribution','Analytic Mean','Analytic distribution'},'interpreter','latex','location','northwest')
 
 
 gaussian_momentum = abs(fftshift(fft(step_three(plotX)))).^2;
@@ -94,22 +88,24 @@ set(plotHandle_Mean, 'YData',[0 max(Gaussian_Time_Probability(x(plotX),j*dt))])
 set(plotHandle_Mean, 'XData', [p_0*j*dt/m,p_0*j*dt/m])
 set(plotHandle_2, 'YData', Gaussian_Time_Probability(x(plotX),j*dt))
 
-s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+s=sprintf('Distribution of wave packet, $\\left| \\psi (x;t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
 
 
 
-figure(3); clf;
-plotHandle_1 = plot(p(plotX)/p_0, abs(step_three(plotX)).^2);
+figure(2); clf;
+plotHandle_1 = plot(p(plotX)/p_0, abs(fftshift(fft(step_three(plotX)))).^2);
 hold on
+% CHANGE TO ANALYTIC FOURIER
 plotHandle_2 = plot(p(plotX)/p_0, abs(fftshift(fft(Gaussian_Wave_Time_Evolution(x(plotX),j*dt)))).^2,'--');
 hold off
-xlabel('$P/p_0$', 'interpreter', 'latex', 'fontsize', 14)
+xlabel('NEED ANALYTIC FOURIER OF WAVE $P/p_0$', 'interpreter', 'latex', 'fontsize', 14)
 ylabel('Probability distribution', 'fontsize', 14)
-s=sprintf('$\\left| \\psi (t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
+s=sprintf('Distribution of wave packet, $\\left| \\psi (p;t = %i \\; \\mathrm{fs}) \\right|^2$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
+legend({'Numerical distribution','Analytic Mean','Analytic distribution'},'interpreter','latex','location','northwest')
 
-fig = figure(4);
+fig = figure(3);
 left_color = [0 0 0];
 right_color = [0 0 0];
 set(fig,'defaultAxesColorOrder',[left_color; right_color]);
@@ -118,13 +114,14 @@ plotHandle_wPosition = plot(gaussian_width_position,'b');
 hold on
 plotHandle_wPosition_Theoretical = plot(Theoretical_Width_Position(((1:length(gaussian_width_position))-1)*dt),'--r');
 hold off
-xlabel('$itererings variabel$', 'interpreter', 'latex', 'fontsize', 14)
-ylabel('\Delta X(t)', 'fontsize', 14)
+xlabel('Time / [fs]', 'interpreter', 'latex', 'fontsize', 14)
+ylabel('Position \Delta X(t)', 'fontsize', 14)
 yyaxis right 
 plotHandle_wMomentum = plot(gaussian_width_momentum,'r');
 hold on
-plotHandle_wMomentum_Theoretical = plot(Theoretical_Width_Momentum(((1:length(gaussian_width_position))-1)*dt),'--g');
+plotHandle_wMomentum_Theoretical = plot(Theoretical_Width_Momentum(((1:length(gaussian_width_position))-1)*dt),'--b');
 hold off
-ylabel('\Delta P(t)', 'fontsize', 14)
-s=sprintf('$Uncertainty of Wave Packets$',j*dt);
+ylabel('Momentum \Delta P(t)', 'fontsize', 14)
+s=sprintf('Time Evolution of Wave Packet Width, $\\psi (x/p;t)$',j*dt);
 title(s, 'interpreter', 'latex', 'fontsize', 18)
+legend({'Numerical Position Wave Width','Analytic Position Wave Width','Numerical Momentum Wave Width','Analytical Momentum Wave Width'},'interpreter','latex','location','northwest')
