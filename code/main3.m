@@ -1,5 +1,5 @@
 % ===================================
-% HOMEWORK 3B IN COMP.PHYS. - TASK 2
+% HOMEWORK 3B IN COMP.PHYS. - TASK 3
 % ===================================
 % By Victor Nilsson, Simon Nilsson
 % 2015
