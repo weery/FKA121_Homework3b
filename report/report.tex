@@ -118,11 +118,7 @@ In Fig. \ref{fig:1} we can see the similarities of the analytic and numerical re
 \label{fig:2_c}
 \end{subfigure}
 
-\caption{
-	\textit{(a):}  
-	\textit{(b):} 
-	\textit{(c):} 
-}
+\caption{The distribution of the wave packets for position/momentum \textit{(a)}/\textit{(b)}, at time $\unit[2048]{fs}$. In \textit{(c)} the numerical time evolution of the width of the wave packets for both the position and momentum are compared with the analytical values.}
 \label{fig:2}
 \end{figure}
 
@@ -151,6 +147,22 @@ yielding the wave packet,
 \psi(p,t) = \frac{\sqrt{2} \pi^{1/4} \exp \left(-\frac{d^2 (\text{p0}-p \hbar )^2}{2 \hbar ^2}-\frac{i p^2 t \hbar }{2 m}\right)}{\sqrt{\frac{m}{d^2 m+i t \hbar }} \sqrt{d+\frac{i t \hbar }{d m}}},
 \end{equation}
 in the momentum domain.
+
+The theoretical width of the packet grows according to,
+
+\begin{equation}
+\Delta X(t) =\frac{d}{2^{1/2}}\left(1+\frac{\hbar^2 t^2}{m^2 d^4}\right)^{1/2}
+\end{equation}
+
+and since the Gaussian wave packets fulfills the lower bound of the Heisenberg's uncertainty relation,
+
+\begin{equation}
+\Delta X \Delta P = \hbar/2
+\end{equation}
+
+which gives the expression for the uncertainty of the momentum as well\cite{Shankar:1994}.
+
+which 
 
 
 
@@ -192,7 +204,7 @@ in the momentum domain.
 	\label{fig:3_f}
 \end{subfigure}
 
-\caption{The scattered probability densities for the 6 different cases.}
+\caption{The scattered probability densities for the 6 different cases. In the left column we have $\alpha = 0.5$ and in the left $\alpha=2.0$. For the different rows we have $p_0^2/2m=0.08, 0.10, 0.12$ top down. }
 \label{fig:3}
 \end{figure}
 
@@ -210,15 +222,14 @@ in the momentum domain.
 	\label{tab:3}
 \end{table}
 
-In the third task we scatter the same particle against a one-dimensional Eckhart barrier, described by
+In the third task we scatter the same particle against a one-dimensional Eckhart barrier so we do not have a free particle, but we have a potential described by,
 \begin{equation}
 V(x) = V_0 \cosh^{-2} (x/\alpha),
 \end{equation}
 
-
 with $V_0 = \unit[0.1]{eV}$.
 
-Three cases are studied: $p_0^2/2m$ = 0.08 eV, 0.10 eV and 0.12 eV. The results are shown in Figure~\ref{fig:3}.
+Three cases are studied: $p_0^2/2m$ = 0.08 eV, 0.10 eV and 0.12 eV. The results are shown in Figure~\ref{fig:3}. We see that the particle scatters only significantly for $\alpha = 0.5$.
 
 
 
