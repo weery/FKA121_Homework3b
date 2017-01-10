@@ -22,7 +22,7 @@ n_points    = 2^10;
 dp          = 2*pi/(n_points*dx);
 dt          = 1;
 v_0         = 0.10;
-alpha       = 0.5;
+alpha       = 2.0;
 
 
 % ----------- VARIABLES ------------

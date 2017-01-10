@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      3464,        122]
-NotebookOptionsPosition[      3044,        102]
-NotebookOutlinePosition[      3384,        117]
-CellTagsIndexPosition[      3341,        114]
+NotebookDataLength[      9260,        298]
+NotebookOptionsPosition[      8611,        270]
+NotebookOutlinePosition[      8951,        285]
+CellTagsIndexPosition[      8908,        282]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -55,53 +55,221 @@ Cell[BoxData[{
   ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"fWave", " ", "=", " ", 
-   RowBox[{"InverseFourierTransform", "[", 
-    RowBox[{"wave", ",", " ", "x", ",", " ", "p"}], "]"}]}], 
+   RowBox[{
+    SqrtBox[
+     RowBox[{"2", "\[Pi]"}]], 
+    RowBox[{"InverseFourierTransform", "[", 
+     RowBox[{"wave", ",", " ", "x", ",", " ", "p"}], "]"}]}]}], 
   ";"}], "\[IndentingNewLine]", "fWave", "\[IndentingNewLine]", 
  RowBox[{"fWave", "//", "InputForm"}]}], "Input",
  CellChangeTimes->{{3.691230233870574*^9, 3.691230364528964*^9}, {
   3.6912304624642677`*^9, 3.691230489291834*^9}, {3.6912306058912477`*^9, 
   3.691230614633391*^9}, {3.691230699288478*^9, 3.691230737079852*^9}, {
   3.691230851805193*^9, 3.691230854366943*^9}, {3.691318304087049*^9, 
-  3.691318304941066*^9}}],
+  3.691318304941066*^9}, {3.693030481402281*^9, 3.693030483646635*^9}}],
 
 Cell[BoxData[
  FractionBox[
-  SuperscriptBox["\[ExponentialE]", 
-   RowBox[{
-    RowBox[{
-     RowBox[{"-", "\[ImaginaryI]"}], " ", "p", " ", "x0"}], "-", 
-    FractionBox[
-     RowBox[{
-      SuperscriptBox["d", "2"], " ", 
-      SuperscriptBox[
-       RowBox[{"(", 
-        RowBox[{"p0", "-", 
-         RowBox[{"p", " ", "\[HBar]"}]}], ")"}], "2"]}], 
-     RowBox[{"2", " ", 
-      SuperscriptBox["\[HBar]", "2"]}]]}]], 
   RowBox[{
-   SuperscriptBox[
-    RowBox[{"(", 
-     FractionBox["1", 
-      SuperscriptBox["d", "2"]], ")"}], 
-    RowBox[{"1", "/", "4"}]], " ", 
+   SqrtBox["2"], " ", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "\[ImaginaryI]"}], " ", "p", " ", "x0"}], "-", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["d", "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"p0", "-", 
+          RowBox[{"p", " ", "\[HBar]"}]}], ")"}], "2"]}], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["\[HBar]", "2"]}]]}]], " ", 
    SuperscriptBox["\[Pi]", 
-    RowBox[{"1", "/", "4"}]]}]]], "Output",
+    RowBox[{"1", "/", "4"}]]}], 
+  SuperscriptBox[
+   RowBox[{"(", 
+    FractionBox["1", 
+     SuperscriptBox["d", "2"]], ")"}], 
+   RowBox[{"1", "/", "4"}]]]], "Output",
  CellChangeTimes->{3.691230737549843*^9, 3.6912308547927094`*^9, 
-  3.6913183062488537`*^9}],
+  3.6913183062488537`*^9, 3.693030486442177*^9}],
 
 Cell["\<\
-E^((-I)*p*x0 - (d^2*(p0 - \
-p*\[HBar])^2)/(2*\[HBar]^2))/((d^(-2))^(1/4)*Pi^(1/4))\
+(Sqrt[2]*E^((-I)*p*x0 - (d^2*(p0 - \
+p*\[HBar])^2)/(2*\[HBar]^2))*Pi^(1/4))/(d^(-2))^(1/4)\
 \>", "Output",
  CellChangeTimes->{3.691230737549843*^9, 3.6912308547927094`*^9, 
-  3.691318306251815*^9}]
+  3.6913183062488537`*^9, 3.693030486445903*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["Task 3", "Section"]], "Chapter",
+ CellChangeTimes->{{3.69302894379178*^9, 3.693028955175249*^9}, {
+  3.693029000681485*^9, 3.693029018923038*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"wave", " ", "=", " ", 
+   RowBox[{
+    SuperscriptBox[
+     RowBox[{"(", 
+      RowBox[{
+       SuperscriptBox["\[Pi]", 
+        RowBox[{"1", "/", "2"}]], 
+       RowBox[{"(", 
+        RowBox[{"d", "+", 
+         FractionBox[
+          RowBox[{"\[ImaginaryI]", " ", "\[HBar]", " ", "t"}], 
+          RowBox[{"m", " ", "d"}]]}], ")"}]}], ")"}], 
+     RowBox[{
+      RowBox[{"-", "1"}], "/", "2"}]], " ", 
+    RowBox[{"Exp", "[", 
+     FractionBox[
+      RowBox[{"-", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"x", "-", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{"p0", "/", "m"}], ")"}], "t"}]}], ")"}], "2"]}], 
+      RowBox[{
+       AdjustmentBox["2",
+        BoxBaselineShift->0.14285714285714285`,
+        BoxMargins->{{0., 0.}, {-0.14285714285714285`, 
+         0.14285714285714285`}}], 
+       AdjustmentBox[" ",
+        BoxBaselineShift->0.14285714285714285`,
+        BoxMargins->{{0., 0.}, {-0.14285714285714285`, 
+         0.14285714285714285`}}], 
+       SuperscriptBox[
+        AdjustmentBox["d",
+         BoxBaselineShift->0.14285714285714285`,
+         BoxMargins->{{0., 0.}, {-0.14285714285714285`, 
+          0.14285714285714285`}}], "2"], 
+       AdjustmentBox[" ",
+        BoxBaselineShift->0.14285714285714285`,
+        BoxMargins->{{0., 0.}, {-0.14285714285714285`, 
+         0.14285714285714285`}}], 
+       RowBox[{
+        AdjustmentBox["(",
+         BoxBaselineShift->0.14285714285714285`,
+         BoxMargins->{{0., 0.}, {-0.14285714285714285`, 
+          0.14285714285714285`}}], 
+        RowBox[{
+         AdjustmentBox["1",
+          BoxBaselineShift->0.14285714285714285`,
+          
+          BoxMargins->{{0., 0.}, {-0.14285714285714285`, 
+           0.14285714285714285`}}], 
+         AdjustmentBox["+",
+          BoxBaselineShift->0.14285714285714285`,
+          
+          BoxMargins->{{0., 0.}, {-0.14285714285714285`, 
+           0.14285714285714285`}}], 
+         FractionBox[
+          RowBox[{
+           AdjustmentBox["\[ImaginaryI]",
+            BoxBaselineShift->0.2857142857142857,
+            
+            BoxMargins->{{0., 0.}, {-0.2857142857142857, 
+             0.2857142857142857}}], 
+           AdjustmentBox[" ",
+            BoxBaselineShift->0.5714285714285714,
+            
+            BoxMargins->{{0., 0.}, {-0.5714285714285714, 
+             0.5714285714285714}}], 
+           AdjustmentBox["\[HBar]",
+            BoxBaselineShift->0.2857142857142857,
+            
+            BoxMargins->{{0., 0.}, {-0.2857142857142857, 
+             0.2857142857142857}}], 
+           AdjustmentBox[" ",
+            BoxBaselineShift->0.2857142857142857,
+            
+            BoxMargins->{{0., 0.}, {-0.2857142857142857, 
+             0.2857142857142857}}], 
+           AdjustmentBox["t",
+            BoxBaselineShift->0.2857142857142857,
+            
+            BoxMargins->{{0., 0.}, {-0.2857142857142857, 
+             0.2857142857142857}}]}], 
+          RowBox[{"m", " ", 
+           SuperscriptBox["d", "2"]}]]}], ")"}]}]], "]"}], " ", 
+    RowBox[{"Exp", "[", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", "p0"}], "\[HBar]"], 
+      RowBox[{"(", 
+       RowBox[{"x", "-", 
+        FractionBox[
+         RowBox[{"p0", " ", "t"}], 
+         RowBox[{"2", "m"}]]}], ")"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fWave", "=", " ", 
+   RowBox[{
+    SqrtBox[
+     RowBox[{"2", "\[Pi]"}]], 
+    RowBox[{"InverseFourierTransform", "[", 
+     RowBox[{"wave", ",", " ", "x", ",", " ", "p"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", "fWave", "\[IndentingNewLine]", 
+ RowBox[{"fWave", " ", "//", " ", "InputForm"}]}], "Input",
+ CellChangeTimes->{{3.6930290219825573`*^9, 3.6930291966763763`*^9}, {
+  3.6930292403878717`*^9, 3.693029284861545*^9}, {3.6930293594638443`*^9, 
+  3.693029472550643*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   SqrtBox["2"], " ", 
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{
+     RowBox[{"-", 
+      FractionBox[
+       RowBox[{"\[ImaginaryI]", " ", 
+        SuperscriptBox["p", "2"], " ", "t", " ", "\[HBar]"}], 
+       RowBox[{"2", " ", "m"}]]}], "-", 
+     FractionBox[
+      RowBox[{
+       SuperscriptBox["d", "2"], " ", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"p0", "-", 
+          RowBox[{"p", " ", "\[HBar]"}]}], ")"}], "2"]}], 
+      RowBox[{"2", " ", 
+       SuperscriptBox["\[HBar]", "2"]}]]}]], " ", 
+   SuperscriptBox["\[Pi]", 
+    RowBox[{"1", "/", "4"}]]}], 
+  RowBox[{
+   SqrtBox[
+    FractionBox["m", 
+     RowBox[{
+      RowBox[{
+       SuperscriptBox["d", "2"], " ", "m"}], "+", 
+      RowBox[{"\[ImaginaryI]", " ", "t", " ", "\[HBar]"}]}]]], " ", 
+   SqrtBox[
+    RowBox[{"d", "+", 
+     FractionBox[
+      RowBox[{"\[ImaginaryI]", " ", "t", " ", "\[HBar]"}], 
+      RowBox[{"d", " ", "m"}]]}]]}]]], "Output",
+ CellChangeTimes->{3.693029473825697*^9}],
+
+Cell["\<\
+(Sqrt[2]*E^(((-I/2)*p^2*t*\[HBar])/m - (d^2*(p0 - \
+p*\[HBar])^2)/(2*\[HBar]^2))*Pi^(1/4))/
+ (Sqrt[m/(d^2*m + I*t*\[HBar])]*Sqrt[d + (I*t*\[HBar])/(d*m)])\
+\>", "Output",
+ CellChangeTimes->{3.6930294738306093`*^9}]
 }, Open  ]]
 }, Open  ]]
 },
 WindowSize->{928, 1028},
-WindowMargins->{{-10, Automatic}, {Automatic, -10}},
+WindowMargins->{{Automatic, -10}, {Automatic, -10}},
 FrontEndVersion->"10.0 for Linux x86 (64-bit) (December 4, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -119,9 +287,17 @@ Notebook[{
 Cell[CellGroupData[{
 Cell[580, 22, 206, 5, 161, "Chapter"],
 Cell[CellGroupData[{
-Cell[811, 31, 1265, 34, 130, "Input"],
-Cell[2079, 67, 735, 24, 81, "Output"],
-Cell[2817, 93, 199, 5, 46, "Output"]
+Cell[811, 31, 1371, 37, 136, "Input"],
+Cell[2185, 70, 788, 25, 81, "Output"],
+Cell[2976, 97, 231, 5, 46, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3256, 108, 170, 2, 59, "Chapter"],
+Cell[CellGroupData[{
+Cell[3451, 114, 3870, 109, 150, "Input"],
+Cell[7324, 225, 1032, 34, 100, "Output"],
+Cell[8359, 261, 224, 5, 64, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
